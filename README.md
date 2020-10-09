@@ -1,8 +1,36 @@
-# VIDchain API Integration documentation
 
-This documentation is divided in two parts: the requirements and the tutorial. The former provides an overview of the items needed in order to be ready to start the tutorial. Therefore, please read the requirements first so as to get ready for the integration.
+# 1. What is VIDchain?
 
-# Requirements
+VIDchain is an SSI service.
+
+It is composed of diferent building blocks:
+ - VIDchain App, for users to hold W3C Verifiable Credentials (VC) and generate and manage user DID.
+ - VIDchain OP, an OpenID provider that is able to perform DID authentication.
+ - VIDchain API, a service that allows VC management (request and sending credentials).
+
+[filename](_media/vidchain-components.jpg ':include')
+
+# 2. This guide
+This document provides information on how to use the VIDchain API to create and request credentials and how to register as a client to use VIDchain OpenID provider.
+
+It is divided in two parts: the requirements and the tutorial. The former provides an overview of the items needed in order to be ready to start the tutorial. Therefore, please read the requirements first so as to get ready for the integration.
+
+- [1. What is VIDchain?](#1-what-is-vidchain)
+- [2. This guide](#2-this-guide)
+- [3. Integration steps & requirements](#3-integration-steps--requirements)
+  - [3.1. Register your OIDC client](#31-register-your-oidc-client)
+  - [3.2. Create DID](#32-create-did)
+  - [3.3. Accessing the API: API Bearer Token Authentication](#33-accessing-the-api-api-bearer-token-authentication)
+    - [3.3.1. Client-id and entity session key registration (Prod API only)](#331-client-id-and-entity-session-key-registration-prod-api-only)
+  - [3.4. Define the contents of the Verifiable Credentials](#34-define-the-contents-of-the-verifiable-credentials)
+  - [3.5. Integrate your web application using our API reference](#35-integrate-your-web-application-using-our-api-reference)
+  - [3.6. Get the VIDchain Wallet app](#36-get-the-vidchain-wallet-app)
+    - [3.6.1. Download VIDChain wallet](#361-download-vidchain-wallet)
+  
+
+
+
+# 3. Integration steps & requirements
 
 In order to be able to authenticate, issue and verify credentials we’ll need to do some setup to make it work. We’ll guide you through the following steps:
 
@@ -14,7 +42,7 @@ In order to be able to authenticate, issue and verify credentials we’ll need t
 6. Get the VIDchain Wallet
 
 
-## 1. Register your OIDC client 
+## 3.1. Register your OIDC client 
 
 We support OIDC Authorization Code Flow with or without PKCE. We’ll need the following information to register your OIDC client:
 
@@ -54,12 +82,12 @@ this.client = new JSO(configFile);
 
 
 
-## 2. Create DID
+## 3.2. Create DID
 
 In the near future, we will create a website to auto-enroll in our API, but for the moment, we’ll do it for you. 
 
 
-### 3. Accessing the API: API Bearer Token Authentication
+## 3.3. Accessing the API: API Bearer Token Authentication
 
 In order to authenticate with the API, we’ll be using **Bearer Token Http authentication scheme**.
 
@@ -142,20 +170,45 @@ iss: this field must contain the client ID provided to identify the Entity on th
 **NOTE**: JWTs must be signed (JWS) when using Prod API. **When using Test API you just need to Base64-encode the payload**.
 
 
-### Client-id and entity session key registration (Prod API only)
+### 3.3.1. Client-id and entity session key registration (Prod API only)
 
 To be added soon.
 
 In order to register the entity session, an API endpoint will be created so that entities can auto-register their session keys linked to their chosen client-id.
 
 
-## 4. Define the contents of the Verifiable Credentials
+## 3.4. Define the contents of the Verifiable Credentials
 
 Verifiable Credentials contain details about the user to which they are issued. Verifiable Credentials typically contain a number of key-value pairs that describe attributes, or claims, about an individual. While this will be automated shortly, we are creating the credentials schemes manually for now. Then, you will need to prepare the list of items to include in your credentials.
 
 
-## 5. Integrate your web application using our API reference
+## 3.5. Integrate your web application using our API reference
 
-Get ready to integrate VIDChain API in your web application by checking our OpenAPI specification in the following URL: [https://dev.api.vidchain.net/api/v1/api-docs/](https://dev.api.vidchain.net/api/v1/api-docs/)
+Get ready to integrate VIDChain API in your web application by checking our OpenAPI specification in the following URL: [https://api.vidchain.net/api/v1/api-docs/](https://api.vidchain.net/api/v1/api-docs/)
 
 The following endpoints are available to interact with our API:
+
+[filename](_media/openapi-services.jpg ':include')
+
+
+## 3.6. Get the VIDchain Wallet app
+
+As a user, in order to create keys, receive credentials, use them and be able to complete the tutorial you will need a wallet.
+
+### 3.6.1. Download VIDChain wallet
+
+You can download the VIDchain reference wallet here: 
+
+[https://drive.google.com/file/d/1lDOE8EaaAc75QULjYmwezTaEHnz5whp-/view?usp=sharing](https://drive.google.com/file/d/1lDOE8EaaAc75QULjYmwezTaEHnz5whp-/view?usp=sharing)
+
+Once installed, the first time you open the app you’ll be asked to define a PIN code or to authenticate using your biometrics (used to encrypt the keys). As soon as you open the wallet, your keys will be created.
+
+
+[filename](images/image2.png "image_tooltip")
+
+The application has four views:
+
+*   **Profile**: where you can check your user did.
+*   **Login**: where you can scan a QR code presented by  a web page the user asks to authenticate in. 
+*   **Credentials**: list of all the credentials you own and store in your wallet.
+*   **Notifications**: list of all the notifications from a credentials provider.
