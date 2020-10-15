@@ -8,7 +8,7 @@ It is composed of diferent building blocks:
  - VIDchain OP, an OpenID provider that is able to perform DID authentication.
  - VIDchain API, a service that allows VC management (request and sending credentials).
 
-[filename](_media/vidchain-components.jpg ':include')
+![vidchain-components](_media/vidchain-components.jpg)
 
 # 2. This guide
 This document provides information on how to use the VIDchain API to create and request credentials and how to register as a client to use VIDchain OpenID provider.
@@ -188,7 +188,7 @@ Get ready to integrate VIDChain API in your web application by checking our Open
 
 The following endpoints are available to interact with our API:
 
-[filename](_media/openapi-services.jpg ':include')
+![openapi-services](_media/openapi-services.jpg)
 
 
 ## 3.6. Get the VIDchain Wallet app
@@ -204,7 +204,7 @@ You can download the VIDchain reference wallet here:
 Once installed, the first time you open the app you’ll be asked to define a PIN code or to authenticate using your biometrics (used to encrypt the keys). As soon as you open the wallet, your keys will be created.
 
 
-[filename](images/image2.png "image_tooltip")
+![filename](images/image2.png "image_tooltip")
 
 The application has four views:
 
