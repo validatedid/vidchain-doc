@@ -1,22 +1,11 @@
 
-# 1. What is VIDchain?
-
-VIDchain is an SSI service.
-
-It is composed of diferent building blocks:
- - VIDchain App, for users to hold W3C Verifiable Credentials (VC) and generate and manage user DID.
- - VIDchain OP, an OpenID provider that is able to perform DID authentication.
- - VIDchain API, a service that allows VC management (request and sending credentials).
-
-![vidchain-components](_media/vidchain-components.jpg)
-
-# 2. This guide
+# 1. This guide
 This document provides information on how to use the VIDchain API to create and request credentials and how to register as a client to use VIDchain OpenID provider.
 
 It is divided in two parts: the requirements and the tutorial. The former provides an overview of the items needed in order to be ready to start the tutorial. Therefore, please read the requirements first so as to get ready for the integration.
 
-- [1. What is VIDchain?](#1-what-is-vidchain)
-- [2. This guide](#2-this-guide)
+- [1. This guide](#1-this-guide)
+- [2. What is VIDchain?](#2-what-is-vidchain)
 - [3. Integration steps & requirements](#3-integration-steps--requirements)
   - [3.1. Set up your OIDC client](#31-set-up-your-oidc-client)
   - [3.2. Create your entity DID](#32-create-your-entity-did)
@@ -26,9 +15,22 @@ It is divided in two parts: the requirements and the tutorial. The former provid
     - [3.3.3. Client-id and entity session key registration (Prod API only)](#333-client-id-and-entity-session-key-registration-prod-api-only)
   - [3.4. Define the contents of the Verifiable Credentials](#34-define-the-contents-of-the-verifiable-credentials)
   - [3.5. Integrate your web application using our API reference](#35-integrate-your-web-application-using-our-api-reference)
-  - [3.6. Get the VIDchain Wallet app](#36-get-the-vidchain-wallet-app)
-    - [3.6.1. Download VIDChain wallet](#361-download-vidchain-wallet)
+  - [3.6. Get the VIDwallet app](#36-get-the-vidwallet-app)
+    - [3.6.1. Download VIDwallet](#361-download-vidwallet)
   
+  
+# 2. What is VIDchain?
+
+VIDchain is an SSI service.
+
+It is composed of diferent building blocks:
+ - **VIDwallet**, an app for users to hold W3C Verifiable Credentials (VC) and generate and manage user DID.
+ - **VIDauth**, an OpenID provider that is able to perform DID authentication.
+ - **VIDcredentials**, a service that allows VC management (request and sending credentials).
+
+![vidchain-components](_media/vidchain-components.jpg)
+
+
 
 
 
@@ -54,12 +56,12 @@ We support OIDC Authorization Code Flow with or without PKCE. We’ll need the f
 *   (optional) **name**
 *   (optional) **logo** : An image that will appear when user is logging in 
 
-Provide this information to our team and we will assist you creating your OIDC client.
+?> Provide this information to our team and we will assist you creating your OIDC client.
 
 An example of OpenID client creation using Typescript and [JSO client](https://www.npmjs.com/package/jso):
 
 
-```
+``` javascript
 import { JSO, Popup } from "jso";
 
 const nonce = utils.randomString(24);
@@ -96,7 +98,7 @@ In order to authenticate with the API, we’ll be using **Bearer Token Http auth
 ### 3.3.1. Create an assertion to request the access token
 To get the access toke, create an assertion and encode it in base64:
 
-```
+``` javascript
 // Sample assertion 
 {
 	"iss": "ENTITY-NAME",
@@ -115,7 +117,7 @@ ewoJImlzcyI6ICJFTlRJVFktTkFNRSIsCgkiYXVkIjogInZpZGNoYWluLWFwaSIsCgkibm9uY2UiOiAi
 ### 3.3.2. Obtain a valid access token
 To get the access token you will have to make a `POST` request to `/api/v1/sessions` with the following payload:
 
-```
+``` javascript
 {
   "grantType": "urn:ietf:params:oauth:grant-type:jwt-bearer",
   "assertion": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
@@ -136,22 +138,22 @@ The **scope** can have different values depending on if you are accessing the Pr
 The **assertion** is a JWT with the following content:
 
 * Header (**only used in Prod API**):
-    ```
-    {
-      "alg": "ES256K",
-      "typ": JWT
-    }
-    ```
+  ``` javascript
+  {
+    "alg": "ES256K",
+    "typ": JWT
+  }
+  ```
 
 * Payload :
-    ```
-    {
-      "iss": <client-id>,
-      "aud": "vidchain-api",
-      "nonce": "z-0427dc2516d0" (random nonce)
-      "callbackUrl: "https://<entity backend url>/<callback path>"
-    }
-    ```
+  ``` javascript
+  {
+    "iss": <client-id>,
+    "aud": "vidchain-api",
+    "nonce": "z-0427dc2516d0" (random nonce)
+    "callbackUrl: "https://<entity backend url>/<callback path>"
+  }
+  ```
 
   * **iss**: this field must contain the client ID provided to identify the Entity on the VIDchain API
 
@@ -182,11 +184,11 @@ The following endpoints are available to interact with our API:
 ![openapi-services](_media/openapi-services.jpg)
 
 
-## 3.6. Get the VIDchain Wallet app
+## 3.6. Get the VIDwallet app
 
 As a user, in order to create keys, receive credentials, use them and be able to complete the tutorial you will need a wallet.
 
-### 3.6.1. Download VIDChain wallet
+### 3.6.1. Download VIDwallet
 
 You can download the VIDchain reference wallet here: 
 
