@@ -55,6 +55,12 @@ On the `id_token` you will receive the DID the user used to authenticate using D
 ## Requesting (and verifying) a presentation
 Once the user has been authenticated we can start interacting with his DID using the VIDchain API.
 
+This is the diagram of the full flow of presentation request and verification:
+
+![Presentation Request](_media/vidchain-presentation-request.jpg)
+
+### Request presentation
+
 Let's ask him to present his credentials to identify and authorize him.
 
 To do so, we just need to call the `Verifiable Presentation Service` of the VIDchain API.
@@ -84,6 +90,7 @@ VIDchain API will perform a POST to `callbackUrl` that you defined on the onboar
     }
 
 You can retreive the presentation on the URL received. 
+
 
 ## Issue Credentials
 
