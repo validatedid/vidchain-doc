@@ -23,6 +23,11 @@ It is divided in two parts: the requirements and the tutorial. The former provid
   - [Define the contents of the Verifiable Credentials](/requirements.md#define-the-contents-of-the-verifiable-credentials)
   - [Integrate your web application using our API reference](/requirements.md#integrate-your-web-application-using-our-api-reference)
   - [Get the VIDwallet app](/requirements.md#get-the-vidwallet-app)
+- [Tutorial](/tutorial.md)
+  - [OIDC flow for DID Auth](/tutorial.md#oidc-flow-for-did-auth) 
+  - [Issue Credentials](/tutorial.md#issue-credentials)
+  - [Request and Verify credentials](/tutorial.md#request-and-verify-credentials)
+  - [Present and Verify credentials](/tutorial.md#present-and-verify-credentials)
 
 
 
