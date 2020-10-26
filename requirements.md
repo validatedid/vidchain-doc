@@ -60,23 +60,35 @@ In the near future, we will create a website to auto-enroll in our API, but for 
 In order to authenticate with the API, we’ll be using **Bearer Token Http authentication scheme**. You will request an access token that you will include as a Bearer Token in all the requests to the API protected resources.
 
 ### Create an assertion to request the access token
-To get the access toke, create an assertion and encode it in base64:
+To get the access toke, first create an `assertion` JWT token and encode it in `base64`:
 
-``` javascript
-// Sample assertion 
-{
-	"iss": "ENTITY-NAME",
-	"aud": "vidchain-api",
-	"nonce": "z-0427dc2516d0",
-	"apiKey": "2fb8b85c-ebe8-4a27-8718-ebb778ccf285",
-    "callbackUrl": "http://example.info",
-    "image": "iVBORw0KGgoAAgAAADwAAAANCA...",
-    "icon": "iVBORw0KGgoAAgAAADwAAAANCA..."
-}
+* Header (**only used in Prod API**):
+  ``` javascript
+  {
+    "alg": "ES256K",
+    "typ": JWT
+  }
+  ```
 
-// Assertion base64-encoded:
-ewoJImlzcyI6ICJFTlRJVFktTkFNRSIsCgkiYXVkIjogInZpZGNoYWluLWFwaSIsCgkibm9uY2UiOiAiei0wNDI3ZGMyNTE2ZDAiLAoJImFwaUtleSI6ICIyZmI4Yjg1Yy1lYmU4LTRhMjctODcxOC1lYmI3NzhjY2YyODUiLAogICAgImNhbGxiYWNrVXJsIjogImh0dHA6Ly9leGFtcGxlLmluZm8iLAogICAgImltYWdlIjogImlWQk9SdzBLR2dvQUFnQUFBRHdBQUFBTkNBLi4uIiwKICAgICJpY29uIjogImlWQk9SdzBLR2dvQUFnQUFBRHdBQUFBTkNBLi4uIgp9
-```
+* Payload :
+  ``` javascript
+  {
+    "iss": <client-id>,
+    "aud": "vidchain-api",
+    "nonce": "z-0427dc2516d0" (random nonce),
+    "apiKey": <the api-key we have sent to you>,
+    "callbackUrl: "https://<entity backend url>/<callback path>",
+    "image": "iVBORw0KGgoAAgAAADwAAAANCA...", //optional
+    "icon": "iVBORw0KGgoAAgAAADwAAAANCA..." //optional
+  }
+  ```
+
+  * **iss**: this field must contain the client ID provided to identify the Entity on the VIDchain API.
+  * **nonce**: random number.
+  * **api-key**: API key we have provided you.
+  * **callbackUrl** (optional): is the URL where the VIDchain API should be able to redirect when finalising an async process like a Presentation Request. Notice this is not the OIDC callback but the entity backend endpoint where the VIDChain API will send back the endpoint where to retrieve the VP.
+
+> **NOTE**: JWTs must be signed (JWS) when using Prod API. **When using Test API you just need to Base64-encode the payload**.
 
 ### Obtain a valid access token
 To get the access token you will have to make a `POST` request to `/api/v1/sessions` with the following payload:
@@ -93,39 +105,22 @@ The **grantType** just set it as provided in the example above.
 
 The **scope** can have different values depending on if you are accessing the Prod or the test API:
 
-
-
 *   For prod API (api.vidchain.net) use `vidchain profile entity`,
 *   For the TEST (dev.vidchain.net) use `vidchain profile test entity`
 
+The **assertion** is the JWT you created on the first step.
 
-The **assertion** is a JWT with the following content:
+As a **response** you will receive:
 
-* Header (**only used in Prod API**):
-  ``` javascript
-  {
-    "alg": "ES256K",
-    "typ": JWT
-  }
-  ```
-
-* Payload :
-  ``` javascript
-  {
-    "iss": <client-id>,
-    "aud": "vidchain-api",
-    "nonce": "z-0427dc2516d0" (random nonce)
-    "callbackUrl: "https://<entity backend url>/<callback path>"
-  }
-  ```
-
-  * **iss**: this field must contain the client ID provided to identify the Entity on the VIDchain API
-
-  * **callbackUrl** (optional): is the URL where the VIDchain API should be able to redirect when finalising an async process like a Presentation Request. Notice this is not the OIDC callback but the entity backend endpoint where the VIDChain API will send back the endpoint where to retrieve the VP.
-
-
-**NOTE**: JWTs must be signed (JWS) when using Prod API. **When using Test API you just need to Base64-encode the payload**.
-
+``` javascript
+{
+  "accessToken": "eyJhbGciOiJFUzI1NksiLCJ0eXAiOiJKV1QiLCJraWQiOiJ2aWRjaGFpbi1hcGkifQ.eyJzdWIiOiJFTlRJVFktTkFNRSIsImRpZCI6ImRpZDp2aWQ6MHg3OTc0ZGU2NTY4OEFiNTU0QWZENDk1NWMxMkYzQzk0MjdmM0E4QzFBIiwibm9uY2UiOiJ6LTA0MjdkYzI1MTZkMCIsImlhdCI6MTU5ODAyMjM0MSwiZXhwIjoxNjAwNjE0MzQxLCJhdWQiOiJ2aWRjaGFpbi1hcGkifQ.CbsJxbeMmZj8lS8k_-QH4zPLjvYcWjDDpZ7vrOGFq2R30ZSH4bCoZBz2Ra4LXYMkYjH_jPBikso667baudsI9w",
+  "tokenType": "Bearer",
+  "expiresIn": 1600614341,
+  "issuedAt": 1598022341
+}
+```
+* The `accessToken` is the Bearer token you need to include in further calls to protected VIDchain API endpoints.
 
 ### Client-id and entity session key registration (Prod API only)
 
