@@ -30,5 +30,11 @@ It is divided in two parts: the requirements and the tutorial. The former provid
   - [Present and Verify credentials](/tutorial.md#present-and-verify-credentials)
 
 
+# Relevant links:
+ - [VIDchain demo webapps that show how to integrate with VIDchain APIs](https://github.com/validatedid/VIDchain-demo-v2)
+ - [VIDchain OpenAPI specs](https://api.vidchain.net/api/v1/api-docs/)
+ - [VIDwallet APK for Android](https://drive.google.com/file/d/1En7_nhd0ANb3ZZe3DVaMPnmqlRfK8zYC/view?usp=sharing)
+
+
 
 
