@@ -48,12 +48,9 @@ let configFile = {
 this.client = new JSO(configFile);
 ```
 
-
-
 ## Create your entity DID
 
 In the near future, we will create a website to auto-enroll in our API, but for the moment, we’ll do it for you. 
-
 
 ## Accessing the API: API Bearer Token Authentication
 
@@ -152,12 +149,10 @@ As a user, in order to create keys, receive credentials, use them and be able to
 You can download the VIDchain reference wallet here: 
 
 - [Google APK Version for Android](https://drive.google.com/file/d/1En7_nhd0ANb3ZZe3DVaMPnmqlRfK8zYC/view?usp=sharing)
+- [Google APK DEV Versioin for Android](https://drive.google.com/file/d/1mmjCTv0WPA_avHIln8pby5-vCIs7D2Ed/view?usp=sharing)
 
 
 Once installed, the first time you open the app you’ll be asked to define a PIN code or to authenticate using your biometrics (used to encrypt the keys). As soon as you open the wallet, your keys will be created.
-
-
-![filename](images/image2.png "image_tooltip")
 
 The application has four views:
 
@@ -166,5 +161,10 @@ The application has four views:
 *   **Notifications**: list of all the notifications you receive from a credentials provider, like .
 *   **Settings**
 
+And also a top right (+) button that you can use to self-issue your first Verifiable Credentials.
 
+<div align='center'>
 
+![main-kyc](_media/main-kyc.jpg ':size=30%')
+
+</div>
