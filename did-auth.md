@@ -1,12 +1,24 @@
 # Requesting credentials in the wallet from your app (app2app)
 
-You can use the component `did-siop` to request credentials from the VIDwallet.
+You can use the component `did-siop` to request credentials from the VIDwallet. You can [get it from npm](https://www.npmjs.com/package/@validatedid/did-auth).
 
 did-siop is a library written in Typescript that implements the SIOP (Self-Issued OpenID Provider) flavour using DIDs.
 
 ![siop](_media/siop.png)
 
 The current DID Auth implementation follows DID SIOP Auth, which uses two JSON Web Tokens (JWT) signed by both two parties DID keys in a double challenge-response authentication. It is also supported the protocol to exchange Verifiable Credentials as part of the ID token response.
+
+## Installation
+
+```bash
+npm install @validatedid/did-auth
+```
+
+or if you use `yarn`
+
+```bash
+yarn add @validatedid/did-auth
+```
 
 
 ## Verifiable Credentials exchange
@@ -24,3 +36,5 @@ Steps:
 6. Optional but **more than highly recommended**. Do a quick call to our Credentials API to verify the signature of the Verifiable Presentation and the claims we handed to you.
 
 And voilà! You completed a full SSI exchange. You have the credentials, use and keep them wisely! 
+
+?> Check the [package documentation](https://www.npmjs.com/package/@validatedid/did-auth) to get more detailed instructions in how to integrate it with your app
