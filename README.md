@@ -57,8 +57,7 @@ As a user, in order to create keys, receive credentials, use them and be able to
 
 You can download the VIDchain reference wallet here: 
 
-- [Google APK Version for Android](https://drive.google.com/file/d/1En7_nhd0ANb3ZZe3DVaMPnmqlRfK8zYC/view?usp=sharing)
-- [Google APK DEV Versioin for Android](https://drive.google.com/file/d/1mmjCTv0WPA_avHIln8pby5-vCIs7D2Ed/view?usp=sharing)
+- [Google Beta Version for Android](https://play.google.com/apps/testing/com.validatedid.wallet)
 
 
 Once installed, the first time you open the app you’ll be asked to define a PIN code or to authenticate using your biometrics (used to encrypt the keys). As soon as you open the wallet, your keys will be created.
