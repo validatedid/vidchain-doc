@@ -139,32 +139,3 @@ The following endpoints are available to interact with our API:
 
 ![openapi-services](_media/openapi-services.jpg)
 
-
-## Get the VIDwallet app
-
-As a user, in order to create keys, receive credentials, use them and be able to complete the tutorial you will need a wallet.
-
-### Download VIDwallet
-
-You can download the VIDchain reference wallet here: 
-
-- [Google APK Version for Android](https://drive.google.com/file/d/1En7_nhd0ANb3ZZe3DVaMPnmqlRfK8zYC/view?usp=sharing)
-- [Google APK DEV Versioin for Android](https://drive.google.com/file/d/1mmjCTv0WPA_avHIln8pby5-vCIs7D2Ed/view?usp=sharing)
-
-
-Once installed, the first time you open the app you’ll be asked to define a PIN code or to authenticate using your biometrics (used to encrypt the keys). As soon as you open the wallet, your keys will be created.
-
-The application has four views:
-
-*   **Credentials**: list of all the credentials you own and store in your wallet.
-*   **Login**: where you can scan a QR code presented by  a web page the user asks to authenticate in. 
-*   **Notifications**: list of all the notifications you receive from a credentials provider, like .
-*   **Settings**
-
-And also a top right (+) button that you can use to self-issue your first Verifiable Credentials.
-
-<div align='center'>
-
-![main-kyc](_media/main-kyc.jpg ':size=30%')
-
-</div>

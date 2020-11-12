@@ -1,11 +1,10 @@
-# Tutorial
+# Tutorial - Integrate your web or webapp with VIDchain
 
 This tutorial contains guidelines to implement the following actions by means of consuming VIDChain API:
 
   - [OIDC flow for DID Auth](#oidc-flow-for-did-auth) 
+  - [Request and Verify credentials](#request-and-verifying-a-presentation)
   - [Issue Credentials](#issue-credentials)
-  - [Request and Verify credentials](#request-and-verify-credentials)
-  - [Present and Verify credentials](#present-and-verify-credentials)
   
 We will follow this user journey in order to illustrate the Tutorial:
 1. A User gets his first credential by going through a liveliness process that involves scanning his ID card.
@@ -46,11 +45,6 @@ The flow itself works as follows:
 
 On the `id_token` you will receive the DID the user used to authenticate using DID Authentication.
 
-### From a web application on a mobile browser
-> To be added soon.
-
-### From a mobile application
-> To be added soon.
 
 ## Requesting (and verifying) a presentation
 Once the user has been authenticated we can start interacting with his DID using the VIDchain API.
@@ -78,7 +72,7 @@ Following our example, here’s the payload sent to the `/api/v1/verifiable-pres
 
 The user will receive a Presentation Request on his wallet. If he accepts the request, the Wallet will generate a presentation and will send it to the VIDchain API.
 
-### Retreive the presentation
+### Retrieve the presentation
 
 The VIDchain API will store the Verifiable Presentation into the requester’s Hub.
 

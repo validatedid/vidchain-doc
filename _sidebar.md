@@ -1,3 +1,5 @@
 - [What is VIDchain?](/README.md)
 - [Integration steps & requirements](/requirements.md)
-- [Tutorial](tutorial.md)
+- Tutorials
+  - Integrate your [web or webapp with VIDchain](/tutorial.md)
+  - Integrate your [mobile app using DID SIOP](/did-auth)
