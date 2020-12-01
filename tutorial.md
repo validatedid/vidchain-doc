@@ -89,6 +89,18 @@ client_id: CLIENT_ID,
 client_secret
 ```
 
+And receiving as a response:
+
+```
+{
+    "access_token": "7UZT2tlb...UJkdovjfM",
+    "expires_in": 3599,
+    "id_token": "eyJhbGciOiJSUzI1NiIsImt...qvcFmb8vxqwXjHn9kERSRA",
+    "scope": "openid VerifiableIdCredential",
+    "token_type": "bearer"
+}
+```
+
 ## Requesting (and verifying) additional Credentials
 Once the user has been authenticated we can start interacting with his DID using the VIDchain API.
 

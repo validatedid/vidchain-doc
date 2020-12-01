@@ -60,15 +60,7 @@ In order to authenticate with the API, we’ll be using **Bearer Token Http auth
 ### Create an assertion to request the access token
 To get the access toke, first create an `assertion` JWT token and encode it in `base64`:
 
-* Header (**only used in Prod API**):
-  ``` javascript
-  {
-    "alg": "ES256K",
-    "typ": JWT
-  }
-  ```
-
-* Payload :
+* Assertion payload :
   ``` javascript
   {
     "iss": <client-id>,
@@ -86,7 +78,6 @@ To get the access toke, first create an `assertion` JWT token and encode it in `
   * **api-key**: API key we have provided you.
   * **callbackUrl** (optional): is the URL where the VIDchain API should be able to redirect when finalising an async process like a Presentation Request. Notice this is not the OIDC callback but the entity backend endpoint where the VIDChain API will send back the endpoint where to retrieve the VP.
 
-> **NOTE**: JWTs must be signed (JWS) when using Prod API. **When using Test API you just need to Base64-encode the payload**.
 
 ### Obtain a valid access token
 To get the access token you will have to make a `POST` request to `/api/v1/sessions` with the following payload:
@@ -101,10 +92,7 @@ To get the access token you will have to make a `POST` request to `/api/v1/sessi
 
 The **grantType** just set it as provided in the example above.
 
-The **scope** can have different values depending on if you are accessing the Prod or the test API:
-
-*   For prod API (api.vidchain.net) use `vidchain profile entity`,
-*   For the TEST (dev.vidchain.net) use `vidchain profile test entity`
+The **scope** must be `vidchain profile entity`
 
 The **assertion** is the JWT you created on the first step.
 
