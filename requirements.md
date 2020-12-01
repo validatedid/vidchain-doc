@@ -1,4 +1,4 @@
-# Integration steps & requirements
+# Configuration steps
 
 In order to be able to authenticate, issue and verify credentials we’ll need to do some setup to make it work. We’ll guide you through the following steps:
 
@@ -8,6 +8,7 @@ In order to be able to authenticate, issue and verify credentials we’ll need t
 4. Define the contents of your Verifiable Credentials
 5. Check the API Reference to integrate your website with our API in order to issue, request and verify VCs.
 6. Get the VIDchain Wallet
+
 
 
 ## Set up your OIDC client 

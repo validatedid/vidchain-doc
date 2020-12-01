@@ -13,21 +13,22 @@ We will follow this user journey in order to illustrate the Tutorial:
 4. Finally, the user presents this credential to his university in order to get a discount.
 
 ### Demo example: Issuing our first credential
-For the sake of the Tutorial we’ll use the built-in liveliness detection to create a *Verifiable ID* from within the VIDwallet.
+For the sake of the Tutorial we’ll use the built-in liveliness detection to create a *Verifiable ID* from within the VIDwallet. To do so, 
 
-To do so, open the VIDwallet, and select the (+) icon on the top right corner, and then ID Card icon.
-
-Follow the steps to verify your ID and at the end you will receive your first verifiable credential!
-
-Then we will login into a fake Government site and issue a credential to the authenticated user.
+1. open the VIDwallet, and select the (+) icon on the top right corner, and then ID Card icon.
+1. Follow the steps to verify your ID and at the end you will receive your first verifiable credential!
+1. Then we will login into a fake Government site and issue a credential to the authenticated user.
 
 ## Authenticating users with OIDC flow
 
 You will need to configure your web application to initiate an OpenID Connect flow towards VIDchain’s OpenID provider, and set up a callback URL to receive the Authorization Code and request the id_token.
 
+> OpenID Discovery URL
+> You can set up your OIDC client by using OIDC Discovery to: `https://api.vidchain.net/.> well-known/openid-configuration`
+
 ?> NOTE: We strongly recommend the use of an OpenID client library like AppAuth-JS or JSO-OAuth2. Alternatively, you can find a comprehensive list of other certified products on the OpenID website: https://openid.net/developers/certified/ or in https://oauth.net/code/
 
-### Flow from a web application on a desktop browser
+### Flow from a web application
 
 The flow itself works as follows:
 
@@ -45,8 +46,50 @@ The flow itself works as follows:
 
 On the `id_token` you will receive the DID the user used to authenticate using DID Authentication.
 
+### Detailed examples of calls on the flow
 
-## Requesting (and verifying) a presentation
+#### Redirect to OIDP
+First, your client needs to redirect your user to VIDchain's OIDP with an URL like this one:
+
+```
+https://api.vidchain.net/oauth2/auth?
+  response_type=code
+  &state=08bd09b6-8544-4f8b-9aef-bdd6f17db6f7
+  &redirect_uri=<Your callback URL>
+  &client_id=<Your Client ID>
+  &scope=openid VerifiableIdCredential
+  &nonce=a8d84bc5-1c09-484b-9638-81baf028dfb2
+```
+
+#### Callback
+
+Once the user has authenticated using his wallet, the OIDP will redirect the user session to the callback URL providing the `code` :
+```
+http(s)://<callback URL>
+  ?code=pRt3Lk5I7A....IhUNaPsWPQ
+  &scope=openid%20VerifiableIdCredential
+  &state=08bd09b6-8544-4f8b-9aef-bdd6f17db6f7
+```
+
+#### Token endpoint
+
+After receiving the `code`, your OIDC client needs to call the `/token` endpoint:
+
+```
+POST to https://dev.vidchain.net/oauth2/token 
+```
+
+With the following body:
+```
+"Content-Type": 'application/x-www-form-urlencoded'
+code: code,
+redirect_uri: REDIRECT_CALLBACK,
+grant_type: "authorization_code",
+client_id: CLIENT_ID,
+client_secret
+```
+
+## Requesting (and verifying) additional Credentials
 Once the user has been authenticated we can start interacting with his DID using the VIDchain API.
 
 This is the diagram of the full flow of presentation request and verification:

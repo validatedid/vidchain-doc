@@ -33,7 +33,7 @@ This document provides information on how to use the VIDchain API to:
   - request credentials 
 We'll also show you what do you need to do to register as a client to use VIDchain OpenID provider. 
 
-The guide is divided in two parts: the **requirements** part and the **tutorial**. The former provides an overview of the items needed in order to be ready to start the tutorial. Therefore, please read the requirements first so as to get ready for the integration.
+The guide is divided in two parts: the **configuration** part and the **tutorial**. The former provides an overview of the items needed in order to be ready to start the tutorial. Therefore, please read the requirements first so as to get ready for the integration.
 
 - [Setting things up & other requirements](/requirements.md)
   - [Setting up your OIDC client](/requirements.md#set-up-your-oidc-client)
