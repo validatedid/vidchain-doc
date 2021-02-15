@@ -5,7 +5,7 @@ VIDchain is an SSI service.
 
 It is composed of different building blocks:
  - **VIDwallet**, an app for users to hold W3C Verifiable Credentials (VC) and generate and manage user DID.
- - **VIDauth**, an OpenID provider that is able to perform DID authentication.
+ - **VIDconnect**, an OpenID Connect provider that is able to perform DID authentication.
  - **VIDcredentials**, a service that allows VC management (request and sending credentials).
  - **DID SIOP library**, a Typescript library that you can use from your app to exchange credentials with the VIDwallet.
 
@@ -26,11 +26,11 @@ We'll show you how.
 
 # This guide
 This document provides information on how to use the VIDchain API to:
-  - authenticate your users (using standard OpenID Connect!)
+  - Authenticate your users (using standard OpenID Connect!)
     - on your web or webapp
     - on your mobile app
-  - issue credentials
-  - request credentials 
+  - Issue credentials
+  - Request credentials 
 We'll also show you what do you need to do to register as a client to use VIDchain OpenID provider. 
 
 The guide is divided in two parts: the **configuration** part and the **tutorial**. The former provides an overview of the items needed in order to be ready to start the tutorial. Therefore, please read the requirements first so as to get ready for the integration.
@@ -48,7 +48,7 @@ The guide is divided in two parts: the **configuration** part and the **tutorial
     - [Issue Credentials](/tutorial.md#issue-credentials)
     - [Request and Verify credentials](/tutorial.md#request-and-verify-credentials)
     - [Present and Verify credentials](/tutorial.md#present-and-verify-credentials)
-  - Integrate your [mobile app using DID SIOP](/did-auth)
+  - Integrate your [mobile app using DID SIOP](/did-auth.md)
 
 
 # Get the VIDwallet app
@@ -57,7 +57,7 @@ As a user, in order to create keys, receive credentials, use them and be able to
 
 You can download the VIDchain reference wallet here: 
 
-- [Google Beta Version for Android](https://play.google.com/apps/testing/com.validatedid.wallet)
+- [Android Version from Google Play](https://play.google.com/store/apps/details?id=com.validatedid.wallet)
 
 
 Once installed, the first time you open the app you’ll be asked to define a PIN code or to authenticate using your biometrics (used to encrypt the keys). As soon as you open the wallet, your keys will be created.

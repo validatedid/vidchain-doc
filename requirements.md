@@ -11,7 +11,7 @@ In order to be able to authenticate, issue and verify credentials we’ll need t
 
 
 
-## Set up your OIDC client 
+## 1. Set up your OIDC client 
 
 We support OIDC Authorization Code Flow with or without PKCE. We’ll need the following information to register your OIDC client:
 
@@ -49,11 +49,11 @@ let configFile = {
 this.client = new JSO(configFile);
 ```
 
-## Create your entity DID
+## 2. Create your entity DID
 
 In the near future, we will create a website to auto-enroll in our API, but for the moment, we’ll do it for you. 
 
-## Accessing the API: API Bearer Token Authentication
+## 3. Accessing the API: API Bearer Token Authentication
 
 In order to authenticate with the API, we’ll be using **Bearer Token Http authentication scheme**. You will request an access token that you will include as a Bearer Token in all the requests to the API protected resources.
 
@@ -115,12 +115,12 @@ To be added soon.
 In order to register the entity session, an API endpoint will be created so that entities can auto-register their session keys linked to their chosen client-id.
 
 
-## Define the contents of the Verifiable Credentials
+## 4. Define the contents of the Verifiable Credentials
 
 Verifiable Credentials contain details about the user to which they are issued. Verifiable Credentials typically contain a number of key-value pairs that describe attributes, or claims, about an individual. While this will be automated shortly, we are creating the credentials schemes manually for now. Then, you will need to prepare the list of items to include in your credentials.
 
 
-## Integrate your web application using our API reference
+## 5. Integrate your web application using our API reference
 
 Get ready to integrate VIDChain API in your web application by checking our OpenAPI specification in the following URL: [https://api.vidchain.net/api/v1/api-docs/](https://api.vidchain.net/api/v1/api-docs/)
 

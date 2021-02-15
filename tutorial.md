@@ -15,16 +15,16 @@ We will follow this user journey in order to illustrate the Tutorial:
 ### Demo example: Issuing our first credential
 For the sake of the Tutorial we’ll use the built-in liveliness detection to create a *Verifiable ID* from within the VIDwallet. To do so, 
 
-1. open the VIDwallet, and select the (+) icon on the top right corner, and then ID Card icon.
+1. open the VIDwallet, select the (+ New Credential) button and then Verify your ID icon. Both ID card and passport will work.
 1. Follow the steps to verify your ID and at the end you will receive your first verifiable credential!
 1. Then we will login into a fake Government site and issue a credential to the authenticated user.
 
-## Authenticating users with OIDC flow
+## 1. Authenticating users with OIDC flow
 
 You will need to configure your web application to initiate an OpenID Connect flow towards VIDchain’s OpenID provider, and set up a callback URL to receive the Authorization Code and request the id_token.
 
 > OpenID Discovery URL
-> You can set up your OIDC client by using OIDC Discovery to: `https://api.vidchain.net/.> well-known/openid-configuration`
+> You can set up your OIDC client by using OIDC Discovery to: `https://api.vidchain.net/.well-known/openid-configuration`
 
 ?> NOTE: We strongly recommend the use of an OpenID client library like AppAuth-JS or JSO-OAuth2. Alternatively, you can find a comprehensive list of other certified products on the OpenID website: https://openid.net/developers/certified/ or in https://oauth.net/code/
 
@@ -34,7 +34,7 @@ The flow itself works as follows:
 
 ![vichain-did-auth](_media/vidchain-did-auth.jpg)
 
-1. The user requests authentication through VIDChain.
+1. The user requests authentication using SSI or VIDChain button.
 2. The OpenID Connect Client initiates an Authorize Code flow. The user's user agent is redirected to `https://api.vidchain.net/oauth2/auth?client_id=...&redirect_uri=...`
 
     If unable to authenticate the user (= no session cookie exists), the user agent is redirected to the Login URL, where the user is shown a QR code.
@@ -101,16 +101,16 @@ And receiving as a response:
 }
 ```
 
-## Requesting (and verifying) additional Credentials
+## 2. Requesting (and verifying) additional Credentials
 Once the user has been authenticated we can start interacting with his DID using the VIDchain API.
 
 This is the diagram of the full flow of presentation request and verification:
 
 ![Presentation Request](_media/vidchain-presentation-request.jpg)
 
-### Request presentation
+### Request a presentation
 
-Let's ask him to present his credentials to identify and authorize him.
+Let's now ask the user to present his credentials to identify and authorize him.
 
 To do so, we just need to call the `Verifiable Presentation Service` of the VIDchain API.
 
@@ -141,7 +141,7 @@ VIDchain API will perform a POST to `callbackUrl` that you defined on the onboar
 You can retreive the presentation on the URL received. 
 
 
-## Issue Credentials
+## 3. Issue Credentials
 
 On the following schema we see the flow required to issue a credential using VIDchain:
 
