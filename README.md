@@ -35,14 +35,14 @@ We'll also show you what do you need to do to register as a client to use VIDcha
 
 The guide is divided in two parts: the **configuration** part and the **tutorial**. The former provides an overview of the items needed in order to be ready to start the tutorial. Therefore, please read the requirements first so as to get ready for the integration.
 
-- [Setting things up & other requirements](/requirements.md)
+- Step 1: [Setting things up & other requirements](/requirements.md)
   - [Setting up your OIDC client](/requirements.md#set-up-your-oidc-client)
   - [Create your entity DID](/requirements.md#create-your-entity-did)
   - [Accessing the API: API Bearer Token Authentication](/requirements.md#client-id-and-entity-session-key-registration-prod-api-only)
   - [Define the contents of the Verifiable Credentials](/requirements.md#define-the-contents-of-the-verifiable-credentials)
 
 
-- Web or mobile? Once you have set things up, you can interact with the wallet from your backend or directly from your mobile app:
+- Step 2: Web or mobile? Once you have set things up, you can interact with the wallet from your backend or directly from your mobile app:
   - Integrate your [web or webapp with VIDchain](/tutorial.md)
     - [OIDC flow for DID Auth](/tutorial.md#oidc-flow-for-did-auth) 
     - [Issue Credentials](/tutorial.md#issue-credentials)

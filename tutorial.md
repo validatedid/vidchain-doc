@@ -38,11 +38,12 @@ The flow itself works as follows:
 2. The OpenID Connect Client initiates an Authorize Code flow. The user's user agent is redirected to `https://api.vidchain.net/oauth2/auth?client_id=...&redirect_uri=...`
 
     If unable to authenticate the user (= no session cookie exists), the user agent is redirected to the Login URL, where the user is shown a QR code.
-  
-3. The user scans the QR code to authenticate with the wallet app.
-4. The DID Auth process is performed.
-5. The user is redirected to the Client’s `/callback` url along with the Authorization Code.
-6. The web application sitting on the callback URL can get the `id_token` from the OIDC Provider using the Authorization Code.
+   
+3. If needed, the Relying Party (the Web) might request in this call identity attributes. In this example we request a `VerifiableIdCredential`
+4. The user scans the QR code to authenticate with the wallet app. 
+5. The DID Auth process is performed.
+6. The user is redirected to the Client’s `/callback` url along with the Authorization Code.
+7. The web application sitting on the callback URL can get the `id_token` from the OIDC Provider using the Authorization Code.
 
 On the `id_token` you will receive the DID the user used to authenticate using DID Authentication.
 
@@ -60,6 +61,8 @@ https://api.vidchain.net/oauth2/auth?
   &scope=openid VerifiableIdCredential
   &nonce=a8d84bc5-1c09-484b-9638-81baf028dfb2
 ```
+
+> Note the scope parameter, where we are requesting a `VerifiableIdCredential`
 
 #### Callback
 
@@ -102,7 +105,10 @@ And receiving as a response:
 ```
 
 ## 2. Requesting (and verifying) additional Credentials
-Once the user has been authenticated we can start interacting with his DID using the VIDchain API.
+
+Now that the Wallet has been registered in the VIDchain API, you can interact with it using its DID.
+
+In this example, we will request again a `VerifiableIdCredential` to the user, but this time we won't be using OpenID but a call direct to the API REST. We call it a Presentation since we are requesting the user to _present_ a credential.
 
 This is the diagram of the full flow of presentation request and verification:
 
